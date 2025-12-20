@@ -1,0 +1,22 @@
+Website Preview Notes - Schengen Visa Tracker
+=============================================
+
+Preview URL: https://8082-i00y92bn3evmy4q2p9nuz-b5b540db.manusvm.computer
+
+Sections Verified:
+1. Hero section - App icon, title, tagline, buttons ✓
+2. Features section - 6 feature cards with icons ✓
+3. App Preview section - Screenshots carousel ✓
+4. Tutorial section - Step-by-step guide with screenshots ✓
+   - Step 1: Getting Started
+   - Step 2: Recording Your Trips
+   - Step 3: Quick Trip Planning
+   - (more steps below)
+5. Pricing section (to verify)
+6. Privacy Policy section (to verify)
+7. Contact section (to verify)
+8. Footer (to verify)
+
+All screenshots are loading correctly.
+Mobile responsive navigation with hamburger menu.
+Color scheme matches app (EU blue #003399, gold #FFD700).
