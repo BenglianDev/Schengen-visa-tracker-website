@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Schengen Visa Tracker - Track your Schengen days with ease. Monitor your 90/180 day rule compliance for Schengen Area travel.">
+    <meta name="keywords" content="Schengen visa, visa tracker, 90/180 rule, Europe travel, visa calculator">
+    <meta name="author" content="Schengen Visa Tracker">
+    <title>Schengen Visa Tracker - Track Your Schengen Days with Ease</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/app-icon.png">
+    <link rel="apple-touch-icon" href="images/app-icon.png">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="Schengen Visa Tracker">
+    <meta property="og:description" content="Track your Schengen days with ease. Monitor your 90/180 day rule compliance.">
+    <meta property="og:image" content="images/app-icon.png">
+    <meta property="og:type" content="website">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --eu-blue: #003399;
+            --eu-gold: #FFD700;
+            --text-primary: #1a1a1a;
+            --text-secondary: #666666;
+            --text-light: #8E8E93;
+            --bg-light: #F2F2F7;
+            --bg-white: #FFFFFF;
+            --success-green: #22c55e;
+            --warning-orange: #FF9500;
+            --danger-red: #FF3B30;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: var(--text-primary);
+            line-height: 1.6;
+            background-color: var(--bg-white);
+        }
+        
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 12px 20px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--eu-blue);
+            font-weight: 700;
+            font-size: 18px;
+        }
+        
+        .nav-logo img {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 24px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--eu-blue);
+        }
+        
+        .nav-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--eu-blue);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 120px 20px 60px;
+            background: linear-gradient(135deg, #E6F0FF 0%, #F2F2F7 100%);
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero-icon {
+            width: 120px;
+            height: 120px;
+            border-radius: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 8px 32px rgba(0, 51, 153, 0.2);
+        }
+        
+        .hero h1 {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--eu-blue);
+            margin-bottom: 12px;
+        }
+        
+        .hero-tagline {
+            font-size: 20px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        
+        .btn-primary {
+            background: var(--eu-blue);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #002266;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 51, 153, 0.3);
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: var(--eu-blue);
+            border: 2px solid var(--eu-blue);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--eu-blue);
+            color: white;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 80px 20px;
+            background: var(--bg-white);
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--eu-blue);
+            margin-bottom: 48px;
+        }
+        
+        .features-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+        }
+        
+        .feature-card {
+            background: var(--bg-light);
+            padding: 32px;
+            border-radius: 16px;
+            text-align: center;
+        }
+        
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+        
+        .feature-card h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+        }
+        
+        .feature-card p {
+            color: var(--text-secondary);
+            font-size: 15px;
+        }
+        
+        /* App Preview Section */
+        .app-preview {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, var(--eu-blue) 0%, #001a4d 100%);
+            color: white;
+        }
+        
+        .app-preview .section-title {
+            color: white;
+        }
+        
+        .preview-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 48px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .preview-screenshots {
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+            padding: 20px 0;
+            max-width: 100%;
+        }
+        
+        .preview-screenshots img {
+            width: 200px;
+            border-radius: 24px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            flex-shrink: 0;
+        }
+        
+        /* Tutorial Section */
+        .tutorial {
+            padding: 80px 20px;
+            background: var(--bg-light);
+        }
+        
+        .tutorial-steps {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .tutorial-step {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .step-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: var(--eu-blue);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+        
+        .step-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        .step-content {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+        
+        .step-screenshots {
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+            padding: 10px 0;
+        }
+        
+        .step-screenshots img {
+            width: 180px;
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            flex-shrink: 0;
+        }
+        
+        /* Pricing Section */
+        .pricing {
+            padding: 80px 20px;
+            background: var(--bg-white);
+            text-align: center;
+        }
+        
+        .pricing-card {
+            max-width: 400px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #FFF8E1 0%, #FFFDE7 100%);
+            border-radius: 24px;
+            padding: 40px;
+            border: 2px solid var(--eu-gold);
+        }
+        
+        .pricing-badge {
+            display: inline-block;
+            background: var(--eu-gold);
+            color: var(--text-primary);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .pricing-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+        
+        .pricing-price {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--eu-blue);
+            margin-bottom: 8px;
+        }
+        
+        .pricing-period {
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+        
+        .pricing-features {
+            text-align: left;
+            margin-bottom: 24px;
+        }
+        
+        .pricing-features li {
+            list-style: none;
+            padding: 8px 0;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .pricing-features li::before {
+            content: "✓";
+            color: var(--success-green);
+            font-weight: 700;
+        }
+        
+        .trial-note {
+            background: rgba(0, 51, 153, 0.1);
+            padding: 16px;
+            border-radius: 12px;
+            margin-top: 16px;
+            font-size: 14px;
+            color: var(--eu-blue);
+        }
+        
+        /* Privacy Section */
+        .privacy {
+            padding: 80px 20px;
+            background: var(--bg-light);
+        }
+        
+        .privacy-content {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .privacy-content h2 {
+            color: var(--eu-blue);
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+        
+        .privacy-updated {
+            color: var(--text-light);
+            font-size: 14px;
+            margin-bottom: 32px;
+        }
+        
+        .privacy-content h3 {
+            color: var(--text-primary);
+            font-size: 18px;
+            margin-top: 24px;
+            margin-bottom: 12px;
+        }
+        
+        .privacy-content p {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+        
+        /* Impressum Section */
+        .impressum {
+            padding: 80px 20px;
+            background: var(--bg-white);
+        }
+        
+        .impressum-content {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--bg-light);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .impressum-content h2 {
+            color: var(--eu-blue);
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+        
+        .impressum-subtitle {
+            color: var(--text-light);
+            font-size: 14px;
+            margin-bottom: 32px;
+        }
+        
+        .impressum-content h3 {
+            color: var(--text-primary);
+            font-size: 18px;
+            margin-top: 24px;
+            margin-bottom: 12px;
+        }
+        
+        .impressum-content h3:first-of-type {
+            margin-top: 0;
+        }
+        
+        .impressum-content p {
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+        
+        .impressum-content a {
+            color: var(--eu-blue);
+            text-decoration: none;
+        }
+        
+        .impressum-content a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 80px 20px;
+            background: var(--bg-white);
+            text-align: center;
+        }
+        
+        .contact-card {
+            max-width: 500px;
+            margin: 0 auto;
+            background: var(--bg-light);
+            border-radius: 16px;
+            padding: 40px;
+        }
+        
+        .contact-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+        
+        .contact-card h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        .contact-card p {
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+        
+        .contact-email {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--eu-blue);
+            font-weight: 600;
+            font-size: 18px;
+            text-decoration: none;
+        }
+        
+        .contact-email:hover {
+            text-decoration: underline;
+        }
+        
+        /* Disclaimer */
+        .disclaimer {
+            background: #FFF8E1;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        .disclaimer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .disclaimer-box {
+            background: white;
+            border: 1px solid #FFD700;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .disclaimer-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .disclaimer-text {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .disclaimer-source {
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+        
+        .disclaimer-source a {
+            color: var(--eu-blue);
+            text-decoration: none;
+        }
+        
+        .disclaimer-source a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--eu-blue);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .footer-copyright {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14px;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 20px;
+                gap: 16px;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-menu-btn {
+                display: block;
+            }
+            
+            .hero {
+                padding: 100px 20px 40px;
+            }
+            
+            .hero h1 {
+                font-size: 28px;
+            }
+            
+            .hero-tagline {
+                font-size: 18px;
+            }
+            
+            .hero-icon {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .section-title {
+                font-size: 24px;
+            }
+            
+            .features, .app-preview, .tutorial, .pricing, .privacy, .contact {
+                padding: 60px 20px;
+            }
+            
+            .preview-screenshots img {
+                width: 160px;
+            }
+            
+            .step-screenshots img {
+                width: 150px;
+            }
+            
+            .pricing-price {
+                font-size: 40px;
+            }
+            
+            .privacy-content {
+                padding: 24px;
+            }
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Scrollbar styling for screenshot containers */
+        .preview-screenshots::-webkit-scrollbar,
+        .step-screenshots::-webkit-scrollbar {
+            height: 8px;
+        }
+        
+        .preview-screenshots::-webkit-scrollbar-track,
+        .step-screenshots::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+        }
+        
+        .preview-screenshots::-webkit-scrollbar-thumb,
+        .step-screenshots::-webkit-scrollbar-thumb {
+            background: rgba(0, 51, 153, 0.3);
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-content">
+            <a href="#" class="nav-logo">
+                <img src="images/app-icon.png" alt="Schengen Visa Tracker">
+                <span>Schengen Visa Tracker</span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="#features">Features</a>
+                <a href="#tutorial">Tutorial</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#privacy">Privacy</a>
+                <a href="#impressum">Impressum</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <button class="nav-menu-btn" id="menuBtn" onclick="toggleMenu()">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <img src="images/app-icon.png" alt="Schengen Visa Tracker App Icon" class="hero-icon">
+            <h1>Schengen Visa Tracker</h1>
+            <p class="hero-tagline">Track your Schengen days with ease</p>
+            <div class="hero-buttons">
+                <a href="https://play.google.com/store/apps/details?id=space.manus.schengen.visa.tracker.t20251217142705" class="btn btn-primary">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/></svg>
+                    Get on Google Play
+                </a>
+                <a href="#tutorial" class="btn btn-secondary">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <h2 class="section-title">Why Use Schengen Visa Tracker?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>90/180 Day Rule Made Simple</h3>
+                <p>Automatically calculates your remaining Schengen days based on the rolling 180-day window. No more manual counting!</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📅</div>
+                <h3>Visual Calendar View</h3>
+                <p>See all your trips at a glance with color-coded calendar views. Past trips in blue, planned trips in lilac. Switch between month and year views easily.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">✈️</div>
+                <h3>Plan Future Trips</h3>
+                <p>Check if your planned trips fit within your allowance before booking. Use the Quick Trip Calculator for instant results.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>100% Private</h3>
+                <p>All your data stays on your device. No accounts, no cloud sync, no tracking. Your travel history is yours alone.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">ℹ️</div>
+                <h3>Built-in FAQ</h3>
+                <p>Learn about Schengen rules, country lists, microstates, overseas territories, and the upcoming ETIAS system—all within the app.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💰</div>
+                <h3>One-Time Purchase</h3>
+                <p>No subscriptions. Pay once, use forever. 30-day free trial to try all features.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Preview Section -->
+    <section class="app-preview">
+        <h2 class="section-title">See It In Action</h2>
+        <div class="preview-container">
+            <div class="preview-screenshots">
+                <img src="images/screenshots/1.2.11TrackerScreen1.jpg" alt="Tracker Dashboard">
+                <img src="images/screenshots/1.2.11TrackerScreen2Tripcards.jpg" alt="Trip Cards List">
+                <img src="images/screenshots/1.2.11Calendar1Month.jpg" alt="Calendar Month View">
+                <img src="images/screenshots/1.2.1..Calendar2aYear.jpg" alt="Calendar Year View">
+            </div>
+        </div>
+    </section>
+
+    <!-- Tutorial Section -->
+    <section class="tutorial" id="tutorial">
+        <h2 class="section-title">How to Use Schengen Visa Tracker</h2>
+        <div class="tutorial-steps">
+            
+            <!-- Step 1: Getting Started -->
+            <div class="tutorial-step">
+                <div class="step-header">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">The Tracker Dashboard</h3>
+                </div>
+                <p class="step-content">
+                    The main <strong>Tracker</strong> screen shows your current Schengen visa status at a glance. The progress ring displays how many of your 90 days you've used, color-coded green (plenty), orange (running low), or red (critical). Below, you'll see your remaining days and when more days become available as past trips exit the 180-day window.
+                </p>
+                <div class="step-screenshots">
+                    <img src="images/screenshots/1.2.11TrackerScreen1.jpg" alt="Tracker Dashboard">
+                </div>
+            </div>
+
+            <!-- Step 2: Your Trip List -->
+            <div class="tutorial-step">
+                <div class="step-header">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Your Trip List</h3>
+                </div>
+                <p class="step-content">
+                    Scroll down on the Tracker screen to see all your trips. Each card shows the trip name, dates, number of days, and when those days will expire from the 180-day window. Trips are labeled: <strong>PLAN</strong> for future planned trips, <strong>NOW</strong> for trips currently in progress. Tap any trip card to jump directly to that month in the Calendar view.
+                </p>
+                <div class="step-screenshots">
+                    <img src="images/screenshots/1.2.11TrackerScreen2Tripcards.jpg" alt="Trip Cards">
+                </div>
+            </div>
+
+            <!-- Step 3: Adding a Trip -->
+            <div class="tutorial-step">
+                <div class="step-header">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Adding a Trip</h3>
+                </div>
+                <p class="step-content">
+                    Tap the blue <strong>+</strong> button to add trips. Choose <strong>"Add a Trip"</strong> to record past trips or plan future ones—just enter the name and dates. The app automatically categorizes it based on whether the dates are in the past or future. Choose <strong>"Quick Trip Calculator"</strong> for a quick hypothetical check without saving.
+                </p>
+                <div class="step-screenshots">
+                    <img src="images/screenshots/1.2.11TrackerScreen1aAddaTrip.jpg" alt="Add Trip Options">
+                </div>
+            </div>
+
+            <!-- Step 4: Quick Trip Calculator -->
+            <div class="tutorial-step">
+                <div class="step-header">
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">Quick Trip Calculator</h3>
+                </div>
+                <p class="step-content">
+                    The <strong>Quick Trip Calculator</strong> lets you check how a hypothetical trip would affect your visa days—without saving it. Enter your proposed start date and see instantly how many days you can stay. Toggle <strong>"Include planned trips"</strong> to factor in trips you've already planned. Perfect for checking before you book flights!
+                </p>
+                <div class="step-screenshots">
+                    <img src="images/screenshots/1.2.11QuickTripCalculator1.jpg" alt="Quick Calculator Input">
+                    <img src="images/screenshots/1.2.11QuickTripCalculator2.jpg" alt="Quick Calculator Results">
+                </div>
+            </div>
+
+            <!-- Step 5: Calendar Views -->
+            <div class="tutorial-step">
+                <div class="step-header">
+                    <div class="step-number">5</div>
+                    <h3 class="step-title">Calendar Views</h3>
+                </div>
+                <p class="step-content">
+                    The <strong>Calendar</strong> tab shows your travel history visually. <strong>Blue days</strong> are past trips, <strong>lilac days</strong> are planned future trips. Each day displays your remaining Schengen days for that date. Toggle between <strong>Month</strong> and <strong>Year</strong> views. In Year view, tap any month to zoom in. The legend shows your total past and planned days.
+                </p>
+                <div class="step-screenshots">
+                    <img src="images/screenshots/1.2.11Calendar1Month.jpg" alt="Calendar Month View">
+                    <img src="images/screenshots/1.2.11Calendar1aMonth.jpg" alt="Calendar Month with Days">
+                    <img src="images/screenshots/1.2.1..Calendar2aYear.jpg" alt="Calendar Year View">
+                </div>
+            </div>
+
+            <!-- Step 6: Swipe to Edit or Delete -->
+            <div class="tutorial-step">
+                <div class="step-header">
+                    <div class="step-number">6</div>
+                    <h3 class="step-title">Swipe to Edit or Delete</h3>
+                </div>
+                <p class="step-content">
+                    On the Tracker screen, <strong>swipe left</strong> on any trip card to edit it, or <strong>swipe right</strong> to delete it. Visual indicators appear as you swipe—blue for edit, red for delete. This makes managing your trips quick and intuitive without cluttering the interface with buttons.
+                </p>
+                <div class="step-screenshots">
+                    <img src="images/screenshots/1.2.11TrackerScreen2Tripcards.jpg" alt="Trip Cards with Swipe">
+                </div>
+            </div>
+
+            <!-- Step 7: Information & FAQ -->
+            <div class="tutorial-step">
+                <div class="step-header">
+                    <div class="step-number">7</div>
+                    <h3 class="step-title">Information & FAQ</h3>
+                </div>
+                <p class="step-content">
+                    The <strong>Info</strong> tab contains frequently asked questions about Schengen travel rules. Learn which countries are in the Schengen Area, how microstates and overseas territories work, who can travel visa-free, how days are counted, and information about the upcoming ETIAS system. Everything you need to understand the 90/180 rule.
+                </p>
+                <div class="step-screenshots">
+                    <img src="images/screenshots/1.2.11FAQ1.jpg" alt="FAQ Screen">
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <h2 class="section-title">Simple, Fair Pricing</h2>
+        <div class="pricing-card">
+            <span class="pricing-badge">⭐ Lifetime Access</span>
+            <h3 class="pricing-title">Schengen Visa Tracker Pro</h3>
+            <div class="pricing-price">€2.99</div>
+            <p class="pricing-period">One-time purchase • No subscriptions</p>
+            <ul class="pricing-features">
+                <li>Unlimited trip tracking</li>
+                <li>Full calendar view (month & year)</li>
+                <li>Quick trip calculator</li>
+                <li>Complete travel history</li>
+                <li>Built-in FAQ & information</li>
+                <li>Lifetime updates included</li>
+                <li>100% offline & private</li>
+            </ul>
+            <a href="https://play.google.com/store/apps/details?id=space.manus.schengen.visa.tracker.t20251217142705" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                Start Free Trial
+            </a>
+            <div class="trial-note">
+                🎁 <strong>30-day free trial</strong> — Try all features before you decide!
+            </div>
+        </div>
+    </section>
+
+    <!-- Privacy Section -->
+    <section class="privacy" id="privacy">
+        <div class="privacy-content">
+            <h2>Privacy Policy</h2>
+            <p class="privacy-updated">Last updated: December 25, 2024</p>
+            
+            <h3>Data Collection</h3>
+            <p>Schengen Visa Tracker does not collect, store, or transmit any personal data to external servers. All trip data is stored locally on your device only. We believe your travel history is personal information that should remain private.</p>
+            
+            <h3>Data Storage</h3>
+            <p>Your travel records are saved using your device's local storage. This data never leaves your device and is not accessible to us or any third parties. Even we cannot see your trips or travel patterns.</p>
+            
+            <h3>Third-Party Services</h3>
+            <p>This app does not use any third-party analytics, advertising, or tracking services. We don't use Firebase, Google Analytics, or any other tracking tools. The only external service used is Google Play for processing purchases, which is handled entirely by Google according to their privacy policy.</p>
+            
+            <h3>In-App Purchases</h3>
+            <p>Purchases are processed through Google Play. We do not have access to your payment information. Google handles all billing securely according to their own privacy and security standards.</p>
+            
+            <h3>Data Deletion</h3>
+            <p>You can delete all your data at any time by uninstalling the app or clearing the app's data in your device settings. Since no data is stored on our servers, uninstalling the app permanently removes all your information.</p>
+            
+            <h3>Children's Privacy</h3>
+            <p>This app is not directed at children under 13. We do not knowingly collect any information from children.</p>
+            
+            <h3>Changes to This Policy</h3>
+            <p>We may update this privacy policy occasionally. Any changes will be reflected in the "Last updated" date above. Continued use of the app after changes constitutes acceptance of the updated policy.</p>
+            
+            <h3>Contact</h3>
+            <p>If you have questions about this privacy policy, please contact us at schengenvisatracker@gmail.com</p>
+        </div>
+    </section>
+
+    <!-- Impressum Section -->
+    <section class="impressum" id="impressum">
+        <div class="impressum-content">
+            <h2>Impressum</h2>
+            <p class="impressum-subtitle">Legal Disclosure (Angaben gemäß § 5 TMG)</p>
+            
+            <h3>Responsible for Content</h3>
+            <p>Ian Bradbury</p>
+            
+            <h3>Address</h3>
+            <p>Ul. Tsar Simeon 56</p>
+            <p>Nestwork Coworking, Office 12</p>
+            <p>Банско, област Благоевград 2770</p>
+            <p>Bulgaria</p>
+            
+            <h3>Contact</h3>
+            <p>Email: <a href="mailto:schengenvisatracker@gmail.com">schengenvisatracker@gmail.com</a></p>
+            
+            <h3>Disclaimer</h3>
+            <p>This app and website are not affiliated with, endorsed by, or connected to any government entity or the European Union. It is an independent tool for personal travel tracking only. While we strive to provide accurate information, we cannot guarantee the completeness or accuracy of the content. Users are responsible for verifying visa requirements with official sources.</p>
+            
+            <h3>Copyright</h3>
+            <p>© 2025 Schengen Visa Tracker. All rights reserved.</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2 class="section-title">Need Help?</h2>
+        <div class="contact-card">
+            <div class="contact-icon">📧</div>
+            <h3>Get in Touch</h3>
+            <p>Have questions, feedback, or need support? We'd love to hear from you!</p>
+            <a href="mailto:schengenvisatracker@gmail.com" class="contact-email">
+                schengenvisatracker@gmail.com
+            </a>
+        </div>
+    </section>
+
+    <!-- Disclaimer Section -->
+    <section class="disclaimer">
+        <div class="disclaimer-content">
+            <div class="disclaimer-box">
+                <div class="disclaimer-title">
+                    <span>⚠️</span> Important Notice
+                </div>
+                <p class="disclaimer-text">
+                    This app is not affiliated with, endorsed by, or connected to any government entity or the European Union. It is an independent tool for personal travel tracking only.
+                </p>
+            </div>
+            <p class="disclaimer-source">
+                The 90/180-day rule is defined in <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32016R0399" target="_blank" rel="noopener">EU Regulation 2016/399 (Schengen Borders Code)</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#features">Features</a>
+                <a href="#tutorial">Tutorial</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#impressum">Impressum</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <p class="footer-copyright">
+                © 2025 Schengen Visa Tracker. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+        
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('active');
+            });
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            const nav = document.querySelector('.nav');
+            const navLinks = document.getElementById('navLinks');
+            if (!nav.contains(e.target) && navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
